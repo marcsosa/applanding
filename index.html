@@ -8,24 +8,34 @@
 
 </head>
 <body class="">
-    <div class=" container pl-20  bg-amber-50 max-md:pl-5   ">
-        <div class="flex gap-5 max-md:flex-col max-md:gap-0 justify-between	" >
+    <div class="container pl-20 bg-amber-50 max-md:pl-5">
+        <div class="flex gap-5 max-md:flex-col max-md:gap-0 justify-between">
           <div class="flex flex-col w-[38%] max-md:ml-0 max-md:w-full">
             <div class="flex flex-col mt-11 max-md:mt-10 max-md:max-w-full">
               <div class="flex gap-5 max-w-full w-[121px]">
                 <div class="flex-1 shrink-0 bg-amber-600 rounded-full h-[27px]"></div>
-                <div class="flex-1 shrink-0 rounded-full bg-zinc-300 h-[27px]"></div>
+                <div class="flex-1 shrink-0   rounded-full bg-zinc-300 h-[27px]"></div>
                 <div class="flex-1 shrink-0 rounded-full bg-zinc-300 h-[27px]"></div>
               </div>
               <div
                 class="flex flex-col self-end mt-72 text-black leading-[98%] max-md:mt-10"
               >
-                <div class="text-3xl font-light tracking-[19.5px]">SLDO</div>
+                <div class="text-3xl font-light tracking-[19.5px]">DO</div>
                 <div class="mt-8 text-7xl font-bold max-md:text-4xl">Muy Pronto</div>
+                <div class="text-1xl font-bold text-amber-500 mt-5 rounded bg-zinc-900 p-2 text-center">
+                  <span id="daysLabel">Días:</span>
+                  <span id="days">00</span>
+                  <span id="hoursLabel">Horas:</span>
+                  <span id="hours">00</span>
+                  <span id="minutesLabel">Minutos:</span>
+                  <span id="minutes">00</span>
+                  <span id="secondsLabel">Segundos:</span>
+                  <span id="seconds">00</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="flex flex-col ml-5 mx-5 py-5  ">
+          <div class="flex flex-col ml-5 mx-5 py-5">
             <img
               loading="lazy"
               srcset="/landingImage.png"
@@ -34,5 +44,36 @@
           </div>
         </div>
       </div>
+      <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jun 31, 2024 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get current date and time
+            var now = new Date().getTime();
+            
+            // Calculate the remaining time
+            var distance = countDownDate - now;
+            
+            // Calculate days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the countdown
+            document.getElementById("days").innerHTML = formatTime(days);
+            document.getElementById("hours").innerHTML = formatTime(hours);
+            document.getElementById("minutes").innerHTML = formatTime(minutes);
+            document.getElementById("seconds").innerHTML = formatTime(seconds);
+        }, 1000);
+
+        // Add leading zero to single digit numbers
+        function formatTime(time) {
+            return time < 10 ? "0" + time : time;
+        }
+    </script>
 </body>
 </html>
